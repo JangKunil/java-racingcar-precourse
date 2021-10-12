@@ -14,6 +14,7 @@ public class Race {
         generateCars();
         decideRaceNumber();
         raceStart();
+        findWinner();
     }
 
     private void generateCars() {
@@ -79,6 +80,31 @@ public class Race {
             System.out.println();
         }
         System.out.println();
+    }
+
+
+    private void printWinner(List<String> winners) {
+        System.out.print(Constant.FINAL_WINNER);
+
+        for (int i = 0; i < winners.size(); i++) {
+            System.out.print(winners.get(i));
+
+            if (i != winners.size() - 1) {
+                System.out.print(Constant.COMMA);
+            }
+        }
+    }
+
+    private void findWinner() {
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : allRacingCars) {
+            if (car.getPosition() == leadPosition) {
+                winners.add(car.getName());
+            }
+        }
+
+        printWinner(winners);
     }
 
     private void checkRightCarName(String[] cars) {
