@@ -8,10 +8,12 @@ import nextstep.utils.Console;
 public class Race {
     private List<Car> allRacingCars = new ArrayList<>();
     private int raceNumber;
+    private int leadPosition = 0;
 
     public Race() {
         generateCars();
         decideRaceNumber();
+        raceStart();
     }
 
     private void generateCars() {
@@ -24,6 +26,15 @@ public class Race {
         for (String carName : cars) {
             Car car = new Car(carName.trim());
             allRacingCars.add(car);
+        }
+    }
+
+    private void raceStart() {
+        System.out.println(Constant.RACE_PROCESS);
+
+        for (int i = 0; i < raceNumber; i++) {
+            driveCar();
+            printResult();
         }
     }
 
@@ -47,6 +58,14 @@ public class Race {
         for (Car car : allRacingCars) {
             int value = car.getRandomValue();
             car.forward(value);
+
+            updateLeadPosition(car.getPosition());
+        }
+    }
+
+    private void updateLeadPosition(int position) {
+        if (leadPosition < position) {
+            this.leadPosition = position;
         }
     }
 
