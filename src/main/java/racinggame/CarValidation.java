@@ -8,6 +8,10 @@ public class CarValidation {
         return isNotEmptyName(cars) && isRightLength(cars) && isNonDuplicate(cars);
     }
 
+    public static boolean raceNumberValidation(String number) {
+        return isNumber(number) && isPositiveInteger(number);
+    }
+
     private static boolean isNotEmptyName(String[] cars) {
         for (String carName : cars) {
             if (carName.equals(Constant.EMPTY_NAME)) {
@@ -36,5 +40,22 @@ public class CarValidation {
             }
         }
         return true;
+    }
+
+    private static boolean isNumber(String number) {
+        for (int i = 0; i < number.length(); i++) {
+            char num = number.charAt(i);
+
+            if(!Character.isDigit(num)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean isPositiveInteger(String number) {
+        int num = Integer.parseInt(number);
+
+        return num >= Constant.MIN_RACE_NUMBER;
     }
 }

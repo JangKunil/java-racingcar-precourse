@@ -1,4 +1,4 @@
-package racinggame.car;
+package racinggame;
 
 import nextstep.utils.Randoms;
 import racinggame.Constant;
@@ -11,7 +11,13 @@ public class Car {
         this.name = name;
     }
     // 추가 기능 구현
-    private int getRandomValue() {
+    int getRandomValue() {
         return Randoms.pickNumberInRange(Constant.MIN_RANDOM_VALUE, Constant.MAX_RANDOM_VALUE);
+    }
+
+    void forward(int value) {
+        if (value >= Constant.FORWARD_CONDITION) {
+            this.position++;
+        }
     }
 }

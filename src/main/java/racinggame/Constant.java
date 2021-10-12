@@ -6,13 +6,17 @@ public class Constant {
 
     public static final String ERROR_PREFIX = "[ERROR] ";
     public static final String ERROR_CAR_NAME = ERROR_PREFIX + "올바른 입력의 이름이 아닙니다.";
+    public static final String ERROR_RACE_NUMBER = ERROR_PREFIX + "올바른 입력의 회수가 아닙니다";
 
     public static final String EMPTY_NAME = "";
     public static final String DELIMITER = ",";
 
     public static final int MIN_CAR_NAME_LENGTH = 1;
     public static final int MAX_CAR_NAME_LENGTH = 5;
+    public static final int MIN_RACE_NUMBER = 1;
 
     public static final int MIN_RANDOM_VALUE = 0;
     public static final int MAX_RANDOM_VALUE = 9;
+
+    public static final int FORWARD_CONDITION = 4;
 }

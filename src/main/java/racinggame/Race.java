@@ -2,9 +2,8 @@ package racinggame;
 
 import java.util.ArrayList;
 import java.util.List;
-import nextstep.utils.Console;
 
-import racinggame.car.Car;
+import nextstep.utils.Console;
 
 public class Race {
     private List<Car> allRacingCars = new ArrayList<>();
@@ -44,7 +43,29 @@ public class Race {
         }
     }
 
-    private void checkRightNumber(String number) {
+    private void driveCar() {
+        for (Car car : allRacingCars) {
+            int value = car.getRandomValue();
+            car.forward(value);
+        }
+    }
 
+    private void checkRightCarName(String[] cars) {
+        if (!CarValidation.carNameValidation(cars)) {
+            throw new IllegalArgumentException(Constant.ERROR_CAR_NAME);
+        }
+    }
+
+    private void carRegistration(String[] cars) {
+        for (String carName : cars) {
+            Car car = new Car(carName);
+            allRacingCars.add(car);
+        }
+    }
+
+    private void checkRightNumber(String number) {
+        if (!CarValidation.raceNumberValidation(number)) {
+            throw new IllegalArgumentException(Constant.ERROR_RACE_NUMBER);
+        }
     }
 }
